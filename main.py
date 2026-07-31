@@ -23,11 +23,7 @@ class AlienInvasion:
         """Star the main loop"""
 
         while True:
-            # Watch keyboard and mouse events
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
+            self._check_events()
 
             # Redraw the screen during each pass through the loop
             self.screen.fill(self.settings.BG_COLOR)
@@ -36,6 +32,13 @@ class AlienInvasion:
             # Make most recently draw screen visible
             pygame.display.flip()       # Não entendi muito
             self.clock.tick(60)
+
+    def _check_events(self):
+        """Respond to keys pressed"""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
 if __name__ == "__main__":
     ai = AlienInvasion()
