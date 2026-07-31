@@ -8,10 +8,14 @@ class AlienInvasion:
         """Initialize game and create resources"""
         pygame.init()
 
-        self.clock - pygame.time.Clock()
+        self.clock = pygame.time.Clock()
 
         self.screen = pygame.display.set_mode((1200,800))
         pygame.display.set_caption("Alien Invasion")
+
+        # Set BG color
+        self.BG_COLOR = (230,230,230)
+
 
     def run_game(self):
         """Star the main loop"""
@@ -22,6 +26,9 @@ class AlienInvasion:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+
+            # Redraw the screen during each pass through the loop
+            self.screen.fill(self.BG_COLOR)
 
             # Make most recently draw screen visible
             pygame.display.flip()       # Não entendi muito
