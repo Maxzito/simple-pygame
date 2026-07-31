@@ -2,6 +2,7 @@ import sys
 import pygame
 
 from settings import Settings
+from ship import Ship
 
 class AlienInvasion:
     """Overal class to manage game assets behaviour"""
@@ -14,6 +15,7 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode(
                 (self.settings.SW, self.settings.SH)
                 )
+        self.ship = Ship(self)      # Passando self pq esta é uma instancia do game
 
         pygame.display.set_caption("Alien Invasion")
 
@@ -29,6 +31,7 @@ class AlienInvasion:
 
             # Redraw the screen during each pass through the loop
             self.screen.fill(self.settings.BG_COLOR)
+            self.ship.blitme()
 
             # Make most recently draw screen visible
             pygame.display.flip()       # Não entendi muito
