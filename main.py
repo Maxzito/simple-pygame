@@ -24,6 +24,7 @@ class AlienInvasion:
 
         while True:
             self._check_events()
+            self.ship.update()
             self._update_screen()
             self.clock.tick(60)
 
@@ -34,15 +35,23 @@ class AlienInvasion:
                 pygame.quit()
                 sys.exit()
 
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = True
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = False
+            
+
     def _update_screen(self):
         """Upddate images on the screen, and flip a new _update_screen"""
 
-            # Redraw the screen during each pass through the loop
-            self.screen.fill(self.settings.BG_COLOR)
-            self.ship.blitme()
+        # Redraw the screen during each pass through the loop
+        self.screen.fill(self.settings.BG_COLOR)
+        self.ship.blitme()
 
-            # Make most recently draw screen visible
-            pygame.display.flip()       # Não entendi muito
+        # Make most recently draw screen visible
+        pygame.display.flip()       # Não entendi muito
 
 
 if __name__ == "__main__":
